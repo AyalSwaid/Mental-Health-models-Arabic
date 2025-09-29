@@ -33,3 +33,6 @@ seaborn>=0.13.0
 # Jupyter / Notebook (for tqdm.notebook)
 notebook>=7.0.0
 ipykernel>=6.29.0
+
+
+unsloth
