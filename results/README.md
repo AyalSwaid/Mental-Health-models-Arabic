@@ -1,14 +1,3 @@
-<style>
-table {
-  font-family: monospace;
-  font-size: 14px;
-  text-align: center;
-}
-th, td {
-  padding: 6px 12px;
-}
-</style>
-
 # 📊 Model Performance Comparison
 
 This report summarizes the evaluation results of multiple Hebrew-language models: **AlephBERT**, **Gemma-2-2B**, and **Gemma-2-9B** - across three setups:  
