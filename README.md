@@ -42,9 +42,7 @@ pip install -r requirements.txt
 ### GPU Support
 For optimal performance, ensure you have CUDA-compatible PyTorch installed if you plan to use GPU acceleration. The requirements.txt includes the basic PyTorch installation, but you may need to install the CUDA-specific version based on your system configuration.
 
----
-
-## Dataset Access
+## Model Weights Access
 
 The datasets used in this project contain **sensitive mental health conversations** and cannot be made publicly available.  
 They include:
@@ -92,9 +90,9 @@ Together, these models allow for:
 
 All fine-tune scripts here are based on the Sahar dataset. 
 Here is some background:
-### Dataset
-We provide the model with 2 datasets: **messages** and **conversation info**.
 
+
+### Dataset
 Both datasets contains more information, but We will describe only what's neccessary.
 
 **Messages** contains 
