@@ -6,7 +6,7 @@ Metrics include **Accuracy**, **Precision**, **Recall**, **F1**, **ROC-AUC**, an
 
 ---
 
-## 🧠 Results Summary
+## GSR Results Summary
 
 | Model          | Dataset      | Accuracy | Precision | Recall | F1  | ROC_AUC | F2  |
 |----------------|--------------|-----------|------------|--------|-----|----------|-----|
@@ -19,7 +19,7 @@ Metrics include **Accuracy**, **Precision**, **Recall**, **F1**, **ROC-AUC**, an
 
 ---
 
-## 📈 Observations
+## Observations
 
 - **AlephBERT** maintains consistent performance between Original and Anonymized data.  
 - **Gemma-2-2B** shows a notable **drop in Recall** under anonymization.  
@@ -28,16 +28,16 @@ Metrics include **Accuracy**, **Precision**, **Recall**, **F1**, **ROC-AUC**, an
 
 ---
 
-## ⚖️ Binary Classification Results
+## Binary Classification Results
 
 | Category (Hebrew) | Model | Accuracy | Precision | Recall | F1  | ROC-AUC | F2  |
 |--------------------|--------|-----------|------------|--------|-----|----------|-----|
 | Depression         | AlephBERT | 0.78 | 0.65 | 0.53 | 0.59 | 0.81 | 0.55 |
-|                    | Gemma     | 0.79 | 0.65 | 0.60 | 0.62 | 0.83 | 0.61 |
+|                    | Gemma-2-9B     | 0.79 | 0.65 | 0.60 | 0.62 | 0.83 | 0.61 |
 | Self Hurt          | AlephBERT | 0.96 | 0.63 | 0.55 | 0.59 | 0.93 | 0.57 |
-|                    | Gemma     | 0.96 | 0.66 | 0.71 | 0.68 | 0.96 | 0.70 |
+|                    | Gemma-2-9B     | 0.96 | 0.66 | 0.71 | 0.68 | 0.96 | 0.70 |
 | Sexual Hurt        | AlephBERT | 0.95 | 0.59 | 0.73 | 0.65 | 0.94 | 0.70 |
-|                    | Gemma     | 0.96 | 0.82 | 0.66 | 0.73 | 0.94 | 0.69 |
+|                    | Gemma-2-9B     | 0.96 | 0.82 | 0.66 | 0.73 | 0.94 | 0.69 |
 
 ### Insights
 - **Gemma** consistently surpasses **AlephBERT** in both Recall and F1 across all binary tasks.
@@ -49,15 +49,15 @@ Metrics include **Accuracy**, **Precision**, **Recall**, **F1**, **ROC-AUC**, an
 | Category (Hebrew) | Model | Precision | Recall | F1 |
 |--------------------|--------|------------|--------|----|
 | Depression         | AlephBERT | 0.65 | 0.53 | 0.58 |
-|                    | Gemma     | 0.58 | 0.75 | 0.65 |
+|                    | Gemma-2-9B     | 0.58 | 0.75 | 0.65 |
 | Self Hurt          | AlephBERT | 0.52 | 0.60 | 0.55 |
-|                    | Gemma     | 0.59 | 0.54 | 0.56 |
+|                    | Gemma-2-9B     | 0.59 | 0.54 | 0.56 |
 | Sexual Hurt        | AlephBERT | 0.64 | 0.65 | 0.65 |
-|                    | Gemma     | 0.67 | 0.80 | 0.73 |
+|                    | Gemma-2-9B     | 0.67 | 0.80 | 0.73 |
 | Other              | AlephBERT | 0.80 | 0.85 | 0.83 |
-|                    | Gemma     | 0.88 | 0.76 | 0.81 |
+|                    | Gemma-2-9B     | 0.88 | 0.76 | 0.81 |
 
-### 🔍 Observations
+### Observations
 - **Gemma** outperforms **AlephBERT** on emotional and trauma-related categories (higher recall & F1).  
 - **AlephBERT** maintains strong performance in the “Other” category.
 
@@ -68,13 +68,13 @@ Metrics include **Accuracy**, **Precision**, **Recall**, **F1**, **ROC-AUC**, an
 | Category (Hebrew) | Model | Precision | Recall | F1 |
 |--------------------|--------|------------|--------|----|
 | Depression         | AlephBERT | 0.63 | 0.61 | 0.62 |
-|                    | Gemma     | 0.62 | 0.69 | 0.65 |
+|                    | Gemma-2-9B     | 0.62 | 0.69 | 0.65 |
 | Self Hurt          | AlephBERT | 0.62 | 0.67 | 0.64 |
-|                    | Gemma     | 0.64 | 0.68 | 0.66 |
+|                    | Gemma-2-9B     | 0.64 | 0.68 | 0.66 |
 | Sexual Hurt        | AlephBERT | 0.84 | 0.54 | 0.66 |
-|                    | Gemma     | 0.84 | 0.63 | 0.72 |
+|                    | Gemma-2-9B     | 0.84 | 0.63 | 0.72 |
 | Other              | AlephBERT | 0.82 | 0.82 | 0.82 |
-|                    | Gemma     | 0.84 | 0.83 | 0.84 |
+|                    | Gemma-2-9B     | 0.84 | 0.83 | 0.84 |
 
 ### Insights
 - **Multilabel setup** improves balance between Recall and F1 across all classes.  
@@ -85,3 +85,4 @@ Metrics include **Accuracy**, **Precision**, **Recall**, **F1**, **ROC-AUC**, an
 
 *All results were computed using identical dataset splits and preprocessing pipelines.  
 Metrics represent macro-averaged values unless otherwise stated.*
+
