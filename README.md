@@ -43,19 +43,12 @@ pip install -r requirements.txt
 For optimal performance, ensure you have CUDA-compatible PyTorch installed if you plan to use GPU acceleration. The requirements.txt includes the basic PyTorch installation, but you may need to install the CUDA-specific version based on your system configuration.
 
 ## Model Weights Access
+The models are trained on unique datasets from Sahar.
 
-The datasets used in this project contain **sensitive mental health conversations** and cannot be made publicly available.  
-They include:
-
-- **Messages**: Original and anonymized help-seeker texts.  
-- **Conversation Info**: Metadata such as suicide risk scores (GSR).  
-
-➡️ **To gain access to the dataset, you must fill out a dataset request form.**  
+➡️ **To gain access to the model weights, you must fill out a request form.**  
 This ensures compliance with ethical guidelines & privacy requirements.
 
-🔗 [Request Dataset Access Form](https://docs.google.com/forms/d/1hrB1xVcdq_fzA-afq-SyWAIaqYUjLENDt7U4PGAs8lQ/edit)
-
-Only approved researchers who agree to the **data usage agreement** and **ethical standards** will be granted access.  
+🔗 [Request Model Weights Access Form]([https://docs.google.com/forms/d/1hrB1xVcdq_fzA-afq-SyWAIaqYUjLENDt7U4PGAs8lQ/edit](https://forms.gle/g5wDnNgGmQ82dKqj6))
 
 ---
 
@@ -105,7 +98,7 @@ Both datasets contains more information, but We will describe only what's necces
 * gsr (suicide score assessment - 0 or 1)
 
 ### Flow of the model
-We try to predict whether a help-seeker is suicidal based on a combination of the chat and his gsr score.
+We try to predict whether a help-seeker is suicidal based on a combination of the chat.
 
 This model takes into account only the messages of the help seeker,
 
@@ -173,4 +166,5 @@ After fine-tuning, you can run both **classifier** and **generative** models for
 - Use the fine-tuned Gemma-3 model with `.generate()`.  
 - The model produces an **empathetic, counselor-style response in Hebrew**.  
 - You can adjust generation parameters (`max_new_tokens`, `temperature`, `top_p`, `top_k`) for response length and creativity.  
+
 
