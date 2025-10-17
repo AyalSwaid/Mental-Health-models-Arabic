@@ -48,7 +48,7 @@ The models are trained on unique datasets from Sahar.
 ➡️ **To gain access to the model weights, you must fill out a request form.**  
 This ensures compliance with ethical guidelines & privacy requirements.
 
-🔗 [Request Model Weights Access Form]([https://docs.google.com/forms/d/1hrB1xVcdq_fzA-afq-SyWAIaqYUjLENDt7U4PGAs8lQ/edit](https://forms.gle/g5wDnNgGmQ82dKqj6))
+🔗 [Request Model Weights Access Form](https://docs.google.com/forms/d/1hrB1xVcdq_fzA-afq-SyWAIaqYUjLENDt7U4PGAs8lQ/edit](https://forms.gle/g5wDnNgGmQ82dKqj6))
 
 ---
 
@@ -166,5 +166,6 @@ After fine-tuning, you can run both **classifier** and **generative** models for
 - Use the fine-tuned Gemma-3 model with `.generate()`.  
 - The model produces an **empathetic, counselor-style response in Hebrew**.  
 - You can adjust generation parameters (`max_new_tokens`, `temperature`, `top_p`, `top_k`) for response length and creativity.  
+
 
 
