@@ -1,7 +1,20 @@
 ## Training Process
+The process included:
+1. pre-training AraBERTv0.2 large with two tasks: MLM and regression (details below)
+2. Fine-tuning our pre-trained model  to predict the **suicidality score (GSR)** of a help-seeker based on their chat messages.  
 
-The model was trained to predict the **suicidality score (GSR)** of a help-seeker based on their chat messages.  
-The pipeline follows a structured sequence:
+## Pre-Training
+We continued the pre-training of AraBERTv0.2 large with two tasks:
+### 1. MLM - to adapt to the Sahar conversations style domain
+Here we implemented regular BERT style MLM task, which improved the fine-tuning results.
+### 2. Regression - to inject domain knowledge
+Here is the process of the regression task
+   1. Given unlabeled conversations and domain-expert lexicon that contains phrases that indicates to A GSR. The lexicon also contains phrase category
+   2. We selected 6 categories "Past suicidal history", "Family suicide history", "Suicidal ideation", "Hopelessness", "Deliberate self harm", and "Perceived burdensomeness". Then calculated each categories' total phrases frequency in the given conversation, and saved it as a vector of size 6.
+   3. Add a regression head to the AraBERTv0.2 and train it to produce the calculated frequency vector, optimize it on MSE loss.
+
+## Fine-Tuning
+The Fine-Tuning pipeline follows a structured sequence:
 
 1. **Data Loading & Merging**
    - Two datasets were used:
@@ -12,59 +25,18 @@ The pipeline follows a structured sequence:
 2. **Preprocessing**
    - Only messages from the **help-seeker** were included (counselor messages were excluded).
    - All messages within a conversation were concatenated using a `[SEP]` token.
-   - The dataset was then split into **train (80%)** and **test (20%)**, stratified by label.
+   - The dataset was then split into **train (70%)** and **test (30%)**, stratified by label.
 
 3. **Tokenization**
-   - The text was tokenized using **AlephBERT’s tokenizer**, with `max_length=512` and padding.
+   - The text was tokenized using **AraBERTv0.2 large’s tokenizer**, with `max_length=512` and padding.
    - The tokenized data was converted into **PyTorch tensors** for model input.
 
 4. **Model Training**
-   - The base model used was [`onlplab/alephbert-base`](https://huggingface.co/onlplab/alephbert-base).
-   - Optimizer: **AdamW**
-   - Batch size: **16**, Epochs: **3**, Learning rate: **2e-5**
+   - The base model used was the pre-trained model mentioned above.
+   - Optimizer: **AdamW** with linear scheduler with num_warmup_steps=0.
+   - Batch size: **8**, Epochs: **30**, Learning rate: **2e-5**
    - Training was performed on GPU when available.
-   - For each batch:
-     - Compute loss.
-     - Backpropagate gradients.
-     - Apply gradient clipping and optional differential privacy noise (see below).
-
-
-## Differential Privacy (DP) Mechanism
-
-To protect sensitive information contained in the text (even during training), we experimented with adding **Differential Privacy (DP)** noise to the model gradients.
-
-### How It Works
-Differential Privacy ensures that the inclusion or exclusion of any individual conversation does **not significantly affect the model’s parameters** or predictions.
-
-After each gradient update step:
-1. **Gradient Clipping**  
-   All gradients are clipped to a fixed L2 norm (e.g., `clip_norm = 1.0`) to limit their sensitivity.
-2. **Noise Addition**  
-   Gaussian noise is added to the gradients:
-
-   `g' = g + N(0, σ²)`
-
-   where:  
-   - `g` = original gradient  
-   - `ε` (epsilon): privacy budget — smaller values = stronger privacy, more noise  
-   - `δ`: small probability of privacy failure
-   - `σ`: 
-    $$
-     \sigma = \sqrt{2 \log\left(\frac{1.25}{\delta}\right)} \cdot \frac{\text{sensitivity}}{\epsilon}
-    $$  
-
-
-
-### Our Configuration
-| Parameter | Description | Value |
-|------------|--------------|-------|
-| `epsilon` | Privacy budget | 10 |
-| `delta` | Probability of failure | 1e-5 |
-| `clip_norm` | Gradient clipping norm | 1.0 |
-| `sensitivity` | Max gradient influence | 1.0 |
-| `σ (sigma)` | Calculated noise std | ≈ 0.018 |
-
-The threshold **σ ≈ 0.018** was empirically found to be optimal - adding enough noise to preserve privacy while maintaining model performance.
+   - Apply gradient clipping
 
 ## Evaluation Metrics
 
@@ -74,11 +46,8 @@ After training, the model was evaluated using:
 - **Recall**
 - **F1 Score**
 - **F2 Score** (to emphasize recall)
-- **ROC-AUC**
-
-All metrics were computed on the **test set**, with probabilistic outputs used for AUC calculations.
-
----
+  
 
 ### Summary
-This approach demonstrates that integrating **privacy-preserving techniques** such as Differential Privacy into **language models** is feasible without significantly degrading classification accuracy — a promising step toward **ethical AI in mental health** applications.
+This approach demonstrates that adapting the model into our specific domain, Sahar conversations in this case and applying domain-exper knowledge mechanism will boost performance.
+
