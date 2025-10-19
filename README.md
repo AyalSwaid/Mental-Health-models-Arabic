@@ -17,7 +17,7 @@ Before setting up the repository, make sure you have the following installed:
 
 ### Clone the Repository
 ```bash
-git clone https://github.com/BGU-AI-DataScience-Lab/Mental-Health-models.git
+git clone https://github.com/AyalSwaid/Mental-Health-models-Arabic.git
 cd Mental-Health-models
 ```
 
@@ -54,24 +54,19 @@ This ensures compliance with ethical guidelines & privacy requirements.
 
 ##  Models
 
-This repository provides both **classifier models** for risk detection and **generative models** for supportive response generation, all fine-tuned on Hebrew data.
+This repository provides both **classifier models** for risk detection and **generative models** for supportive response generation, all fine-tuned on Arabic data.
 
 ### 🔍 Classifiers
-- **Fine-tuned Hebrew models** to identify **multiple risk levels** in conversations.  
+- **Fine-tuned Arabic models** to identify **multiple risk levels** in conversations.  
 - Tasks include:
   - **GSR Prediction** (binary suicidality detection for General Suicide Risk)  
   - **IMSR Prediction** (binary suicidality detection for Immediate Suicide Risk)  
-  - **Subject Prediction** (binary and multilabel classification for depression, self-harm, sexual harm)  
-- Implemented using **AlephBERT** and **Gemma-2** models.  
-- Trained on anonymized **help-seeker messages** 
-- Support for **Differential Privacy (DP)** fine-tuning with customizable privacy thresholds.  
+  - **Subject Prediction** (binary classification for depression, self-harm, sexual harm)  
+- Implemented using **AraBERTv0.2 large**, **Gemma-3**, and **Fanar** models.  
+- Trained on anonymized **help-seeker messages**
 
 ### 🧠 Generative
-- **Trained Generative Model in Hebrew** based on **Gemma-3-12B**.  
-- Fine-tuned on **Sahar’s volunteer support language** using progressive emotional support datasets.  
-- Alignment with **Sahar’s principles** for empathetic, non-judgmental responses.  
-- Supports **parameter-efficient fine-tuning (LoRA)** with quantization (`bitsandbytes`) for efficient training.  
-- Produces natural, context-aware, and supportive responses in Hebrew.  
+- coming soon
 
 Together, these models allow for:
 1. **Risk detection** – automatically identifying high-risk conversations.  
@@ -91,11 +86,11 @@ Both datasets contains more information, but We will describe only what's necces
 **Messages** contains 
 * engagement_id 
 * text (original messages) 
-* anonymized (modified messages by Sahar volunteers)
 
 **Conversation info** contains
 * engagement_id
 * gsr (suicide score assessment - 0 or 1)
+* Subject (conversation subject)
 
 ### Flow of the model
 We try to predict whether a help-seeker is suicidal based on a combination of the chat.
@@ -111,61 +106,23 @@ and it does not takes into account the counselor messages.
 
 ## Fine-tuning the Generative Model
 
-All generative fine-tuning experiments in this repository are based on the **Sahar progressive emotional support dataset**.  
-The goal is to adapt a large Hebrew-capable model (Gemma-3-12B) to produce **empathetic, counselor-aligned responses** in crisis and support conversations.  
+coming soon
 
-### Dataset
-We use a **conversation dataset** structured as **pairs of turns**:
-- **Input** – the help-seeker’s anonymized message.  
-- **Output** – the counselor’s supportive response (written by Sahar volunteers).  
 
-This ensures that the model learns **how to respond** to diverse, emotionally intense situations in a safe and non-judgmental way.  
-The dataset is anonymized, cleaned, and formatted into a **chat-template format** that follows a user → assistant dialogue structure.
-
-### Flow of the model
-The generative fine-tuning follows these steps:
-
-1. **Load pretrained base model**:  
-   Gemma-3-12B in 4-bit precision (`unsloth/gemma-3-12b-it-unsloth-bnb-4bit`) is chosen for efficiency and strong Hebrew support.
-
-2. **Parameter-efficient fine-tuning (PEFT)**:  
-   We apply **LoRA adapters** with small rank (`r=8`, `lora_alpha=8`) to reduce GPU memory usage while keeping performance.
-
-3. **Chat template formatting**:  
-   Each training sample is converted into a structured dialogue:  
-   - User message (help-seeker)  
-   - Assistant response (counselor)  
-   This standardization ensures consistent model conditioning.
-
-4. **Supervised Fine-Tuning (SFT)**:  
-   We train using Hugging Face’s `trl.SFTTrainer`, optimizing the model on counselor responses only (ignoring instructions in loss calculation).
-
-5. **Evaluation and inference**:  
-   After training, the model can be prompted with a help-seeker’s message and will generate a **supportive, empathetic response** aligned with Sahar’s principles.
-
-### Alignment with Counselor Guidelines (Prompt)
-The fine-tuning integrates **Sahar’s supportive communication principles**, emphasizing:
-- Active listening and validation  
-- Avoiding judgment or clinical advice  
-- Allowing open discussion of suicidal thoughts  
-- Encouraging sharing, presence, and gentle probing  
-- Using **simple, warm, empathetic Hebrew language**  
 
 ##  Inference
 
 After fine-tuning, you can run both **classifier** and **generative** models for predictions.
 
-### Classifier (AlephBERT)
-- Load the tokenizer and model (`onlplab/alephbert-base`).  
+### Classifier (AraBERT)
+- Load the tokenizer and model (aubmindlab/bert-large-arabertv02).  
 - Load your saved weights (`.pth` file).  
 - Tokenize input text and run it through the model.  
 - Output is **0 = Not Suicidal** or **1 = Suicidal**.  
 
 ### Generative (Gemma-3)
-- Format input as a **chat template** (system + user message).  
-- Use the fine-tuned Gemma-3 model with `.generate()`.  
-- The model produces an **empathetic, counselor-style response in Hebrew**.  
-- You can adjust generation parameters (`max_new_tokens`, `temperature`, `top_p`, `top_k`) for response length and creativity.  
+coming soon
+
 
 
 
