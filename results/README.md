@@ -9,7 +9,7 @@ Metrics include **Accuracy**, **Precision**, **Recall**, **F1**, and **F2** scor
 
 | Model          | Accuracy | Precision | Recall | F1  | F2 | AUC-ROC  |
 |----------------|-----------|------------|--------|-----|----------|-----|
-| **AraBERTv0.2 large**         | x | 0.69 | 0.74 | 0.73 | 0.77 | x |
+| **AraBERTv0.2 large**         | x | 0.69 | 0.74 | 0.71 | 0.72 | x |
 | **DK AraBERTv0.2 large**      | x | 0.68 | 0.8 | 0.73 | 0.77 | x |
 | **DK Gemma-3-4B**                | x | 0.66 | 0.59 | 0.62 | 0.60 | x |
 | **DK Fanar-9B**                  | x | 0.68 | 0.68 | 0.68 | 0.68 | x |
@@ -44,8 +44,9 @@ Metrics include **Accuracy**, **Precision**, **Recall**, **F1**, and **F2** scor
 
 ---
 
-*All results were computed using identical dataset splits and preprocessing pipelines, except sexual-hurt used different split duo to target distribution in train and test sets.  
+*All results were computed using identical dataset splits and preprocessing pipelines, except sexual-hurt which used different split due to target distribution in train and test sets.  
 Metrics represent binary-averaged values unless otherwise stated.*
+
 
 
 
