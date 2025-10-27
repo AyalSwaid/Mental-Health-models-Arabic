@@ -4,6 +4,15 @@ This report summarizes the evaluation results of multiple Arabic-language models
 Metrics include **Accuracy**, **Precision**, **Recall**, **F1**, and **F2** scores.
 
 ---
+## Models used
+
+|#| Model                    | Description |
+|-|--------------------------|-------|
+|1|**AraBERTv0.2 large**    |standard AraBERTv0.2 large ([aubmindlab/bert-large-arabertv02](https://huggingface.co/aubmindlab/bert-large-arabertv02))|
+|2|**DK AraBERTv0.2 large** | pretrained model #1 on MLM (on the Arabic Sahar dataset) and domain knowledge (more details in [training folder](https://github.com/AyalSwaid/Mental-Health-models-Arabic/tree/main/Models/Classifiers/GSR%20Predeiction%20-%20Help%20Seeker%20Only/Training%20Code))|
+|3|**DK Gemma-3-4B**        | [Gemma3-4b-it](https://huggingface.co/google/gemma-3-4b-it) with sequence-length=1200, Domain knowledge is inserted into prompts as GSR phrases examples from the lexicon|
+|4|**DK Fanar-9B**          | [Fanar-1-9B-Instruct](QCRI/Fanar-1-9B-Instruct) with sequence-length=700, Domain knowledge is inserted into prompts as GSR phrases examples from the lexicon|
+---
 
 ## GSR Results Summary
 
@@ -36,16 +45,17 @@ Metrics include **Accuracy**, **Precision**, **Recall**, **F1**, and **F2** scor
 |             |      | Fanar-9B     | x | 0.66 | 0.93 | 0.77 | 0.86 | x |
 
 ### Insights
-- **Fanar** consistently surpasses **DK AraBERTv0.2** in both Recall and F1 across all subject prediction tasks.
+- **Fanar** consistently surpasses **DK AraBERTv0.2** in both Recall and F1 across all subject prediction tasks. Though performance remains low due to lack of positive data.
 - in sexual-hurt **Fanar** showed great recall score even though it is only 2% of the data.
-- All models had trouble with depression prediction.
-- The reason for **DK AraBERTv0.2** not benifit from its domain knowledge is because it trained on suicidal categories only domain knowledge.
+- All models had trouble with depression prediction even though it contains more positive samples.
+- The reason for **DK AraBERTv0.2** did not benifit from its domain knowledge is because it trained on suicidal categories only domain knowledge.
 
 
 ---
 
 *All results were computed using identical dataset splits and preprocessing pipelines, except sexual-hurt which used different split due to target distribution in train and test sets.  
 Metrics represent binary-averaged values unless otherwise stated.*
+
 
 
 
