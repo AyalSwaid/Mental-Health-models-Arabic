@@ -39,9 +39,11 @@ Metrics include **Accuracy**, **Precision**, **Recall**, **F1**, and **F2** scor
 | Depression  | 102  | AraBERTv0.2 large | x | 0.42 | 0.24 | 0.311 | 0.26 | x |
 |             |      | DK AraBERTv0.2 large     | x | 0.50 | 0.44 | 0.46 | 0.45 | x |
 |             |      | Fanar-9B     | 0.83 | 0.43 | 0.52 | 0.47 | 0.50 | x |
-| Self Hurt   |  10  | DK AraBERTv0.2 | x | 0.18 | 0.2 | 0.19 | 0.19 | x |
+|  Self Hurt  |      | AraBERTv0.2 large     | 0.98 | 0.2 | 0.1 | 0.13 | 0.11 | x |
+|             |  10  | DK AraBERTv0.2 | x | 0.18 | 0.2 | 0.19 | 0.19 | x |
 |             |      | Fanar-9B     | 0.98 | 0.50 | 0.2 | 0.28 | 0.22 | x |
-| Sexual Hurt |  15  | DK AraBERTv0.2 large | x | 0.47 | 0.66 | 0.55 | 0.61 | x |
+| Sexual Hurt |      | AraBERTv0.2 large     | 0.97 | 0.47 | 0.6 | 0.52 | 0.57 | x |
+|             |  15  | DK AraBERTv0.2 large | x | 0.47 | 0.66 | 0.55 | 0.61 | x |
 |             |      | Fanar-9B     | 0.98 | 0.66 | 0.93 | 0.77 | 0.86 | x |
 
 ### Insights
@@ -55,6 +57,7 @@ Metrics include **Accuracy**, **Precision**, **Recall**, **F1**, and **F2** scor
 
 *All results were computed using identical dataset splits and preprocessing pipelines, except sexual-hurt which used different split due to target distribution in train and test sets.  
 Metrics represent binary-averaged values unless otherwise stated.*
+
 
 
 
