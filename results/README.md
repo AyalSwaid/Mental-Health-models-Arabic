@@ -20,7 +20,7 @@ Metrics include **Accuracy**, **Precision**, **Recall**, **F1**, and **F2** scor
 |----------------|-----------|------------|--------|-----|----------|-----|
 | **AraBERTv0.2 large**         | x | 0.69 | 0.74 | 0.71 | 0.72 | x |
 | **DK AraBERTv0.2 large**      | 0.94 | 0.68 | 0.8 | 0.73 | 0.77 | 0.93 |
-| **DK Gemma-3-4B**                | 0.93 | 0.66 | 0.59 | 0.62 | 0.60 | x |
+| **DK Gemma-3-4B**                | 0.93 | 0.66 | 0.59 | 0.62 | 0.60 | 0.87 |
 | **DK Fanar-9B**                  | 0.94 | 0.68 | 0.68 | 0.68 | 0.68 | 0.94 |
 ---
 
@@ -57,6 +57,7 @@ Metrics include **Accuracy**, **Precision**, **Recall**, **F1**, and **F2** scor
 
 *All results were computed using identical dataset splits and preprocessing pipelines, except sexual-hurt which used different split due to target distribution in train and test sets.  
 Metrics represent binary-averaged values unless otherwise stated.*
+
 
 
 
