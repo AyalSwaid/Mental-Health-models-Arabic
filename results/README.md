@@ -37,7 +37,7 @@ All models struggeled in subject prediction due to lack of positive labels.
 
 | Category | Support | Model | Accuracy | Precision | Recall | F1  | F2  | ROC-AUC |
 |----------|---------|--------|-----------|------------|--------|-----|----------|-----|
-| Depression  | 102  | AraBERTv0.2 large | x | 0.42 | 0.24 | 0.311 | 0.26 | x |
+| Depression  | 102  | AraBERTv0.2 large | 0.83 | 0.41 | 0.30 | 0.35 | 0.2 | 0.79 |
 |             |      | DK AraBERTv0.2 large     | 0.85 | 0.50 | 0.44 | 0.46 | 0.45 | 0.82 |
 |             |      | DK Fanar-9B     | 0.83 | 0.43 | 0.52 | 0.47 | 0.50 | 0.79 |
 |  Self Hurt  |  10  | AraBERTv0.2 large     | 0.98 | 0.2 | 0.1 | 0.13 | 0.11 | 0.87 |
@@ -59,6 +59,7 @@ All models struggeled in subject prediction due to lack of positive labels.
 *All results were computed using identical dataset splits and preprocessing pipelines, **except sexual-hurt** which used different split due to target distribution in train and test sets.
 It is important to note that **DK AraBERTv0.2** did not see the prediction test set during its MLM&reg pre-training, **except for the sexual-hurt split**. While this may be considered a form of data leakage, it did not produce any suspicious or anomalous results.
 Metrics represent binary-averaged values unless otherwise stated.*
+
 
 
 
