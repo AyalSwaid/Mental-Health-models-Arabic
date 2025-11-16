@@ -1,10 +1,6 @@
-This repository contains two complementary components:  
+The models in this repository include fine-tuned large language models and classifiers built to provide emotional support and detect mental crisis risk in Arabic conversations. Trained on anonymized chat data from Sahar, they can identify indicators of suicidality, depression, self-harm, and sexual harm in real interactions.
 
-1. **Classifiers** – Supervised models for detecting suicidality and subject prediction tasks using volunteer-anonymized mental health chat data.  
-2. **Generative** – coming soon
-
-The repository provides code, training scripts, and evaluation pipelines for both tasks.
-
+Together, these models offer a strong foundation for developing safe, empathetic, and culturally informed AI systems for mental health support.
 
 
 ## ⚙️ Setup & Installation
@@ -122,6 +118,7 @@ After fine-tuning, you can run both **classifier** and **generative** models for
 
 ### Generative (Gemma-3)
 coming soon
+
 
 
 
