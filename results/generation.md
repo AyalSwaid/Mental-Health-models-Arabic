@@ -26,3 +26,7 @@ Metrics include **BERTScore**, **Perplexity**.
 | **Gemma-3-12B lexiocon as text**  | 0.7523 | 1822.310 |
 | **Gemma-3-12B lexiocon as tokens** | X | X |
 ---
+
+## Insights
+coming soon
+
