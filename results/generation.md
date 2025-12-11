@@ -24,9 +24,10 @@ Metrics include **BERTScore**, **Perplexity**.
 | **Finetuned Gemma3 (500 steps)** | 0.744 | 1191.629 |
 | **Finetuned Gemma3 (2000 steps)** | 0.7534 | 1254.392 |
 | **Gemma-3-12B lexiocon as text**  | 0.7523 | 1822.310 |
-| **Gemma-3-12B lexiocon as tokens** | X | X |
+| **Gemma-3-12B lexiocon as tokens** | 0.7475 | 522.431 |
 ---
 
 ## Insights
 coming soon
+
 
